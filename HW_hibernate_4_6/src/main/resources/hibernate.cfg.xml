@@ -12,7 +12,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.pool_size">5</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>  <!--параметр create говорит что будут созданы таблицы по нашему Entity-->
+        <property name="hibernate.hbm2ddl.auto">create</property>  <!--параметр create говорит что будут созданы таблицы по нашему Entity-->
        <property name="hibernate.show_sql">true</property>   <!--параметр true говорит что будут в консоль выводиться все генерируемые запросы sql-->
         <mapping class="models.Book"/>
 

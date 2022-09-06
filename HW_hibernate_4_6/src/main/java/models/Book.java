@@ -1,11 +1,14 @@
 package models;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@DynamicUpdate
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +19,10 @@ public class Book {
     public Book() {
     }
 
+    public Book(String name, long author_id) {
+        this.name = name;
+        this.author_id = author_id;
+    }
     public Book(long id, String name, long author_id) {
         this.id = id;
         this.name = name;

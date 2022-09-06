@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class BookHelper {
-    public SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     public BookHelper() {
         this.sessionFactory = HibernateUtil.getSessionFactory();
@@ -39,10 +39,21 @@ public class BookHelper {
 
     public Book getById(long id) {
         Session session = sessionFactory.openSession();
-        Book book = (Book) session.get(Book.class, id);
+        Book book = session.get(Book.class, id);
         session.close();
         return book;
     }
+
+    public void updateNameById(long id, String newName) {
+        Session session = sessionFactory.openSession();
+        Book book = session.get(Book.class, id);
+        book.setName(newName);
+        session.beginTransaction();
+        session.save(book);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 
     public void removeBook(Book book) {
         Session session = sessionFactory.openSession();
